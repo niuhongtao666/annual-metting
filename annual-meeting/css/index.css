@@ -1,0 +1,178 @@
+.content{
+    width: 100%;
+    height: 100%;
+    background: url("../img/background.png") no-repeat;
+    background-size: cover;
+    position: relative;
+}
+#rewardZone1{
+    display: none;
+}
+#rewardZone2 img{
+    display: none;
+}
+/*中奖号码样式开始*/
+.content .rewardZone{
+    width: 1.3rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url("../img/num3.png") no-repeat;
+    background-size: cover;
+    top: 0.1rem;
+    left: 0.3rem;
+}
+.content .rewardZone div.zone{
+    width: 33.33%;
+    height: 0.5rem;
+    float: left;
+    background: url("../img/chassis.png") no-repeat center 0.3rem;
+    background-size:0.3rem 0.15rem;
+}
+.content .rewardZone div.zone .zoneInner{
+    width: 67%;
+    height: 0.21rem;
+    margin: 0 auto;
+    /*background: rebeccapurple;*/
+    margin-top: 0.08rem;
+}
+.content .rewardZone div.zone .zoneInner img{
+    width: 100%;
+    height: 100%;
+    float: left;
+    display: none;
+}
+/***********10个的开始*/
+.content .rewardZone2{
+    width: 1.3rem;
+    height: 1rem;
+    position: absolute;
+    background: url("../img/num10.png") no-repeat;
+    background-size: cover;
+    top: 0.1rem;
+    left: 0.3rem;
+    box-sizing: border-box;
+    padding-right: 0.03rem;
+    padding-left: 0.03rem;
+}
+.content .rewardZone2 .zone{
+    width: 48%;
+    height: 0.7rem;
+    float: left;
+    margin-top: 0.17rem;
+}
+.content .rewardZone2 div.left {
+    box-sizing: border-box;
+    padding-left: 0.05rem;
+}
+.content .rewardZone2 div.left .leftZone {
+    width: 100%;
+    height: 0.14rem;
+}
+.content .rewardZone2 div.left .leftZone .zoneIn{
+    width: 33.33%;
+    height: 0.14rem;
+    float: left;
+    background: url("../img/chassis.png") no-repeat center bottom;
+    background-size:0.06rem 0.05rem;
+}
+.content .rewardZone2 div.left .leftZone .zoneIn .zoneInner{
+    width: 67%;
+    height: 0.09rem;
+    margin: 0 auto;
+}
+.content .rewardZone2 div.left .leftZone .zoneIn .zoneInner img {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+.content .rewardZone2 div.right {
+    margin-left: 0.045rem;
+    padding-left: 0.05rem;
+    box-sizing: border-box;
+}
+.content .rewardZone2 div.right .leftZone {
+    width: 100%;
+    height: 0.14rem;
+}
+.content .rewardZone2 div.right .leftZone .zoneIn{
+    width: 33.33%;
+    height: 0.14rem;
+    float: left;
+    background: url("../img/chassis.png") no-repeat center bottom;
+    background-size:0.06rem 0.05rem;
+}
+.content .rewardZone2 div.right .leftZone .zoneIn .zoneInner{
+    width: 67%;
+    height: 0.09rem;
+    margin: 0 auto;
+}
+.content .rewardZone2 div.right .leftZone .zoneIn .zoneInner img {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+/***********10个的结束*/
+/*中奖号码样式结束*/
+/*中奖号码发射样式开始*/
+.content .number-launch{
+    width: 1.02rem;
+    height: 1.3rem;
+    background: url("../img/number-launch.png") no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0.4rem;
+    top: 0.5rem;
+}
+/*中奖号码发射样式结束*/
+/*奖品样式开始*/
+.content .reward{
+    width: 0.55rem;
+    height: 0.55rem;
+    /*background:url("../img/third-one.png") no-repeat;*/
+    /*background-size: cover;*/
+    position: absolute;
+    left: 52.5%;
+    margin-left: -0.25rem;
+    top: 0.63rem;
+}
+.content .reward img{
+    width: 0.55rem;
+    height: 0.7rem;
+    position: absolute;
+    left: 0rem;
+    right: 0rem;
+}
+/*奖品样式结束*/
+/*相信的力量开始*/
+.content .believe{
+    width: 0.8rem;
+    height: 0.8rem;
+    background:url("../img/believe.png") no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+}
+/*相信的力量结束*/
+/*底部方块开始*/
+.content .block{
+    width: 0.4rem;
+    height: 0.6rem;
+    background:url("../img/block.png") no-repeat;
+    background-size: 0.3rem 0.6rem;
+    position: absolute;
+    left: 54%;
+    bottom: 0rem;
+}
+/*底部方块结束*/
+/*按钮样式开始*/
+.content .button{
+    width: 0.8rem;
+    height: 0.8rem;
+    background:url("../img/button-start.png") no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.1rem;
+}
+/*按钮样式结束*/
