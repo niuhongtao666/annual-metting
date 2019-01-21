@@ -118,21 +118,21 @@
 .content .number-launch{
     width: 1.02rem;
     height: 1.3rem;
-    background: url("../img/number-launch.png") no-repeat;
+    background: url("../img/number-launch1.png") no-repeat;
     background-size: cover;
     position: absolute;
     left: 0.4rem;
-    top: 0.5rem;
+    top: 0.6rem;
     display: none;
 }
 .content #number-launch{
     width: 1.02rem;
     height: 1.3rem;
-    background: url("../img/number-launch.png") no-repeat;
+    background: url("../img/number-launch1.png") no-repeat;
     background-size: cover;
     position: absolute;
     left: 0.4rem;
-    top: 0.5rem;
+    top: 0.6rem;
 }
 /*中奖号码发射样式结束*/
 /*奖品样式开始*/

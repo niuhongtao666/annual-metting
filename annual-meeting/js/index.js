@@ -72,7 +72,7 @@ window.onload=function(){
             }
         }
     function paopao(){
-        var html='<div class="paopao" style="left: '+ pp.pl + 'rem;position: absolute;top: -0.3rem;"><img src="'+pp.img[pp.c]+'" width="30" height="30"></div>'
+        var html='<div class="paopao" style="left: '+ pp.pl + 'rem;position: absolute;top: -0.4rem;"><img src="'+pp.img[pp.c]+'" width="30" height="30"></div>'
         $(".number-launch").append(html);
         pp.c ++;
         if(pp.c >= pp.img.length){
