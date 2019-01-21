@@ -1,10 +1,24 @@
-
 //一等奖内定抽奖系统
 window.onload=function(){
+        var pp = {
+            pl : 0,
+            img:['img/1.png','img/0.png','img/2.png','img/3.png','img/4.png','img/5.png','img/6.png','img/7.png','img/8.png','img/9.png',
+                // 'img/1-1.png','img/0-1.png','img/2-1.png','img/3-1.png','img/4-1.png','img/5-1.png','img/6-1.png','img/7-1.png','img/8-1.png','img/9-1.png',
+                // 'img/1-2.png','img/0-2.png','img/2-2.png','img/3-2.png','img/4-2.png','img/5-2.png','img/6-2.png','img/7-2.png','img/8-2.png','img/9-2.png',
+            ],
+            c : 0,
+            step : 500
+        };
+        var stopArr=["459", "324", "117", "384", "352", "247", "085", "489",
+            "005", "070", "235", "405", "041", "276", "021", "300", "272", "496", "387", "224",
+            "356", "467", "354", "200", "017", "417", "296", "329", "458",
+            "059", "469", "391", "107", "421", "498", "149","109", "479", "056", "122", "302", "193", "446", "012", "209", "126"
+        ];
         var rewardZone1=document.getElementById('rewardZone1');
         var rewardZone2=document.getElementById('rewardZone2');
         var aImag=rewardZone1.getElementsByTagName('img');
         var rewardImg=document.getElementById('rewardImg');
+        var grd=document.getElementById('grd');
         console.log(aImag);
         // var oInput=document.getElementsByClassName('dv');
         var timer1=null;
@@ -50,15 +64,49 @@ window.onload=function(){
                 clearInterval(timer1);
                 clearInterval(timer2);
                 clearInterval(timer3);
+                $('.number-launch').css('display','block');
+                $('#number-launch').css('display','none');
                 timer1=setInterval(haha1,50);
                 timer2=setInterval(haha2,50);
                 timer3=setInterval(haha3,50);
             }
         }
+    function paopao(){
+        var html='<div class="paopao" style="left: '+ pp.pl + 'rem;position: absolute;top: -0.3rem;"><img src="'+pp.img[pp.c]+'" width="30" height="30"></div>'
+        $(".number-launch").append(html);
+        pp.c ++;
+        if(pp.c >= pp.img.length){
+            pp.c = 0;
+        }
+        pp.pl = Math.random()/3+0.4;
+        $(".paopao").each(function () {
+
+            if($(this).index()%2 == 0){
+                pp.step = 120;
+            }else if($(this).index()%3 == 0){
+                pp.step = 220;
+            }else{
+                pp.step = 320;
+            }
+
+            if (!$(this).is(":animated")) {
+                $(this).animate({
+                        bottom: "4rem",
+                        fontSize: "0.5rem",
+                        opacity: "0"
+                    }, (500-pp.step)*10,
+                    function () {
+                        $(this).remove();
+                    })
+            }
+        });
+        setTimeout(paopao,pp.step);
+    }
     $(document).keypress(function (e) {
         // alert(e.keyCode);
         //开始抽奖
         if (e.keyCode == 32) {
+            paopao();
             aImag[0].style.display='block';
             aImag[1].style.display='block';
             aImag[2].style.display='block';
@@ -69,6 +117,7 @@ window.onload=function(){
         }
         /*s键开始*/
         if (e.keyCode == 115) {
+            paopao();
             status=1;
             $('#rewardZone1 img').css('display','none');
             $('#rewardZone2 img').css('display','block');
@@ -82,46 +131,71 @@ window.onload=function(){
             r31Use();
             r41Use();
             r51Use();
+            $('.number-launch').css('display','block');
+            $('#number-launch').css('display','none');
         }
         if (e.keyCode == 49) {
             $('#rewardZone1 img').css('display','none');
+            $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/third-one.png';
+            grd.src='img/third-grd.png';
             rewardZone1.style.display='none';
             rewardZone2.style.display='block';
         }
         if (e.keyCode == 50) {
             $('#rewardZone1 img').css('display','none');
+            $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/third-two.png';
+            grd.src='img/third-grd.png';
             rewardZone1.style.display='none';
             rewardZone2.style.display='block';
         }
         if (e.keyCode == 51) {
+            $('#rewardZone1 img').css('display','none');
             $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/second-reward.png';
+            grd.src='img/second-grd.png';
             rewardZone1.style.display='block';
             rewardZone2.style.display='none';
         }
         if (e.keyCode == 52) {
+            $('#rewardZone1 img').css('display','none');
             $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/first-reward.png';
+            grd.src='img/first-grd.png';
             rewardZone1.style.display='block';
             rewardZone2.style.display='none';
         }
         if (e.keyCode == 53) {
+            $('#rewardZone1 img').css('display','none');
             $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/special-reward.png';
+            grd.src='img/special-grd.png';
             rewardZone1.style.display='block';
             rewardZone2.style.display='none';
         }
         if (e.keyCode == 54) {
+            $('#rewardZone1 img').css('display','none');
             $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/third-one.png';
+            grd.src='img/third-grd.png';
             rewardZone1.style.display='block';
             rewardZone2.style.display='none';
         }
         if (e.keyCode == 55) {
+            $('#rewardZone1 img').css('display','none');
             $('#rewardZone2 img').css('display','none');
             rewardImg.src='img/third-two.png';
+            grd.src='img/third-grd.png';
+            rewardZone1.style.display='block';
+            rewardZone2.style.display='none';
+        }
+        //额外增加抽奖
+        if (e.keyCode == 56) {
+            $('#rewardZone1 img').css('display','none');
+            $('#rewardZone2 img').css('display','none');
+            rewardImg.src='img/extra-reward.png';
+            grd.src='img/extra-grd.png';
             rewardZone1.style.display='block';
             rewardZone2.style.display='none';
         }
@@ -160,8 +234,66 @@ window.onload=function(){
                         }
                     }else{
                         if(str.length==3){
+                            $('.number-launch').css('display','none');
+                            $('#number-launch').css('display','block');
                             if(arr10.length){
                                 if(arr10.indexOf(str)!==-1){
+                                    // alert('包含了');
+                                    use();
+                                    check();
+                                }else {
+                                    if(stopArr.length){
+                                        if(stopArr.indexOf(str)!==-1){
+                                            // alert('包含了');
+                                            use();
+                                            check();
+                                        }else {
+                                            arr.push(str);
+                                        }
+                                    }else{
+                                        arr.push(str);
+                                    }
+                                }
+                            }else{
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(str)!==-1){
+                                        // alert('包含了');
+                                        use();
+                                        check();
+                                    }else {
+                                        arr.push(str);
+                                    }
+                                }else{
+                                    arr.push(str);
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    if(str!==undefined){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
+                        if(arr10.length){
+                            if(arr10.indexOf(str)!==-1){
+                                // alert('包含了');
+                                use();
+                                check();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(str)!==-1){
+                                         // alert('包含了');
+                                         use();
+                                         check();
+                                    }else {
+                                        arr.push(str);
+                                    }
+                                }else{
+                                    arr.push(str);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(str)!==-1){
                                     // alert('包含了');
                                     use();
                                     check();
@@ -171,20 +303,6 @@ window.onload=function(){
                             }else{
                                 arr.push(str);
                             }
-                        }
-                    }
-                }else{
-                    if(str!==undefined){
-                        if(arr10.length){
-                            if(arr10.indexOf(str)!==-1){
-                                // alert('包含了');
-                                use();
-                                check();
-                            }else {
-                                arr.push(str);
-                            }
-                        }else{
-                            arr.push(str);
                         }
                     }
                 }
@@ -236,6 +354,8 @@ window.onload=function(){
         clearInterval(tl11);
         clearInterval(tl12);
         clearInterval(tl13);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tl11=setInterval(hunl11,50);
         tl12=setInterval(hunl12,50);
         tl13=setInterval(hunl13,50);
@@ -268,6 +388,8 @@ window.onload=function(){
         clearInterval(tr11);
         clearInterval(tr12);
         clearInterval(tr13);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tr11=setInterval(hunr11,50);
         tr12=setInterval(hunr12,50);
         tr13=setInterval(hunr13,50);
@@ -300,6 +422,8 @@ window.onload=function(){
         clearInterval(tl21);
         clearInterval(tl22);
         clearInterval(tl23);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tl21=setInterval(hunl21,50);
         tl22=setInterval(hunl22,50);
         tl23=setInterval(hunl23,50);
@@ -332,6 +456,8 @@ window.onload=function(){
         clearInterval(tr21);
         clearInterval(tr22);
         clearInterval(tr23);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tr21=setInterval(hunr21,50);
         tr22=setInterval(hunr22,50);
         tr23=setInterval(hunr23,50);
@@ -364,6 +490,8 @@ window.onload=function(){
         clearInterval(tl31);
         clearInterval(tl32);
         clearInterval(tl33);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tl31=setInterval(hunl31,50);
         tl32=setInterval(hunl32,50);
         tl33=setInterval(hunl33,50);
@@ -396,6 +524,8 @@ window.onload=function(){
         clearInterval(tr31);
         clearInterval(tr32);
         clearInterval(tr33);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tr31=setInterval(hunr31,50);
         tr32=setInterval(hunr32,50);
         tr33=setInterval(hunr33,50);
@@ -428,6 +558,8 @@ window.onload=function(){
         clearInterval(tl41);
         clearInterval(tl42);
         clearInterval(tl43);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tl41=setInterval(hunl41,50);
         tl42=setInterval(hunl42,50);
         tl43=setInterval(hunl43,50);
@@ -460,6 +592,8 @@ window.onload=function(){
         clearInterval(tr41);
         clearInterval(tr42);
         clearInterval(tr43);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tr41=setInterval(hunr41,50);
         tr42=setInterval(hunr42,50);
         tr43=setInterval(hunr43,50);
@@ -492,6 +626,8 @@ window.onload=function(){
         clearInterval(tl51);
         clearInterval(tl52);
         clearInterval(tl53);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tl51=setInterval(hunl51,50);
         tl52=setInterval(hunl52,50);
         tl53=setInterval(hunl53,50);
@@ -524,6 +660,8 @@ window.onload=function(){
         clearInterval(tr51);
         clearInterval(tr52);
         clearInterval(tr53);
+        $('.number-launch').css('display','block');
+        $('#number-launch').css('display','none');
         tr51=setInterval(hunr51,50);
         tr52=setInterval(hunr52,50);
         tr53=setInterval(hunr53,50);
@@ -562,9 +700,69 @@ window.onload=function(){
                         }
                     }else{
                         if(strl1.length==3){
+                            // alert(strl1+'得到了');
+                            $('.number-launch').css('display','none');
+                            $('#number-launch').css('display','block');
                             if(arr.length){
                                 if(arr.indexOf(strl1)!==-1){
-                                    alert('包含了');
+                                    // alert('包含了');
+                                    l11Use();
+                                    endl1();
+                                }else {
+                                    if(stopArr.length){
+                                        if(stopArr.indexOf(strl1)!==-1){
+                                            // alert('包含了');
+                                            l11Use();
+                                            endl1();
+                                        }else {
+                                            arr10.push(strl1);
+                                        }
+                                    }else{
+                                        arr10.push(strl1);
+                                    };
+                                }
+                            }else{
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strl1)!==-1){
+                                        // alert('包含了');
+                                        l11Use();
+                                        endl1();
+                                    }else {
+                                        arr10.push(strl1);
+                                    }
+                                }else{
+                                    arr10.push(strl1);
+                                };
+                            }
+                        }
+                    }
+                }else{
+                    if(strl1!==undefined){
+                        // alert(strl1+'得到了');
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
+                        if(arr.length){
+                            if(arr.indexOf(strl1)!==-1){
+                                // alert('包含了');
+                                l11Use();
+                                endl1();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strl1)!==-1){
+                                        // alert('包含了');
+                                        l11Use();
+                                        endl1();
+                                    }else {
+                                        arr10.push(strl1);
+                                    }
+                                }else{
+                                    arr10.push(strl1);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl1)!==-1){
+                                    // alert('包含了');
                                     l11Use();
                                     endl1();
                                 }else {
@@ -572,21 +770,7 @@ window.onload=function(){
                                 }
                             }else{
                                 arr10.push(strl1);
-                            }
-                        }
-                    }
-                }else{
-                    if(strl1!==undefined){
-                        if(arr.length){
-                            if(arr.indexOf(strl1)!==-1){
-                                alert('包含了');
-                                l11Use();
-                                endl1();
-                            }else {
-                                arr10.push(strl1);
-                            }
-                        }else{
-                            arr10.push(strl1);
+                            };
                         }
                     }
                 }
@@ -625,9 +809,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strr1.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strr1)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                r11Use();
+                                endr1();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strr1)!==-1){
+                                        // alert('包含了');
+                                        r11Use();
+                                        endr1();
+                                    }else {
+                                        arr10.push(strr1);
+                                    }
+                                }else{
+                                    arr10.push(strr1);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr1)!==-1){
+                                    // alert('包含了');
+                                    r11Use();
+                                    endr1();
+                                }else {
+                                    arr10.push(strr1);
+                                }
+                            }else{
+                                arr10.push(strr1);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strr1!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strr1)!==-1){
+                            // alert('包含了');
+                            r11Use();
+                            endr1();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr1)!==-1){
+                                    // alert('包含了');
+                                    r11Use();
+                                    endr1();
+                                }else {
+                                    arr10.push(strr1);
+                                }
+                            }else{
+                                arr10.push(strr1);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strr1)!==-1){
+                                // alert('包含了');
                                 r11Use();
                                 endr1();
                             }else {
@@ -635,21 +877,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strr1);
-                        }
-                    }
-                }
-            }else{
-                if(strr1!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strr1)!==-1){
-                            alert('包含了');
-                            r11Use();
-                            endr1();
-                        }else {
-                            arr10.push(strr1);
-                        }
-                    }else{
-                        arr10.push(strr1);
+                        };
                     }
                 }
             }
@@ -688,9 +916,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strl2.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strl2)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                l21Use();
+                                endl2();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strl2)!==-1){
+                                        // alert('包含了');
+                                        l21Use();
+                                        endl2();
+                                    }else {
+                                        arr10.push(strl2);
+                                    }
+                                }else{
+                                    arr10.push(strl2);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl2)!==-1){
+                                    // alert('包含了');
+                                    l21Use();
+                                    endl2();
+                                }else {
+                                    arr10.push(strl2);
+                                }
+                            }else{
+                                arr10.push(strl2);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strl2!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strl2)!==-1){
+                            // alert('包含了');
+                            l21Use();
+                            endl2();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl2)!==-1){
+                                    // alert('包含了');
+                                    l21Use();
+                                    endl2();
+                                }else {
+                                    arr10.push(strl2);
+                                }
+                            }else{
+                                arr10.push(strl2);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strl2)!==-1){
+                                // alert('包含了');
                                 l21Use();
                                 endl2();
                             }else {
@@ -698,21 +984,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strl2);
-                        }
-                    }
-                }
-            }else{
-                if(strl2!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strl2)!==-1){
-                            alert('包含了');
-                            l21Use();
-                            endl2();
-                        }else {
-                            arr10.push(strl2);
-                        }
-                    }else{
-                        arr10.push(strl2);
+                        };
                     }
                 }
             }
@@ -751,21 +1023,75 @@ window.onload=function(){
                     }
                 }else{
                     if(strr2.length==3){
-                        arr10.push(strr2);
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
+                        if(arr.length){
+                            if(arr.indexOf(strr2)!==-1){
+                                // alert('包含了');
+                                r21Use();
+                                endr2();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strr2)!==-1){
+                                        // alert('包含了');
+                                        r21Use();
+                                        endr2();
+                                    }else {
+                                        arr10.push(strr2);
+                                    }
+                                }else{
+                                    arr10.push(strr2);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr2)!==-1){
+                                    // alert('包含了');
+                                    r21Use();
+                                    endr2();
+                                }else {
+                                    arr10.push(strr2);
+                                }
+                            }else{
+                                arr10.push(strr2);
+                            };
+                        }
                     }
                 }
             }else{
                 if(strr2!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
                     if(arr.length){
                         if(arr.indexOf(strr2)!==-1){
-                            alert('包含了');
+                            // alert('包含了');
                             r21Use();
                             endr2();
                         }else {
-                            arr10.push(strr2);
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr2)!==-1){
+                                    // alert('包含了');
+                                    r21Use();
+                                    endr2();
+                                }else {
+                                    arr10.push(strr2);
+                                }
+                            }else{
+                                arr10.push(strr2);
+                            };
                         }
                     }else{
-                        arr10.push(strr2);
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strr2)!==-1){
+                                // alert('包含了');
+                                r21Use();
+                                endr2();
+                            }else {
+                                arr10.push(strr2);
+                            }
+                        }else{
+                            arr10.push(strr2);
+                        };
                     }
                 }
             }
@@ -804,13 +1130,35 @@ window.onload=function(){
                     }
                 }else{
                     if(strl3.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strl3)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
                                 l31Use();
                                 endl3();
                             }else {
-                                arr10.push(strl3);
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strl3)!==-1){
+                                        // alert('包含了');
+                                        l31Use();
+                                        endl3();
+                                    }else {
+                                        arr10.push(strl3);
+                                    }
+                                }else{
+                                    if(stopArr.length){
+                                        if(stopArr.indexOf(strl3)!==-1){
+                                            // alert('包含了');
+                                            l31Use();
+                                            endl3();
+                                        }else {
+                                            arr10.push(strl3);
+                                        }
+                                    }else{
+                                        arr10.push(strl3);
+                                    };
+                                };
                             }
                         }else{
                             arr10.push(strl3);
@@ -819,16 +1167,38 @@ window.onload=function(){
                 }
             }else{
                 if(strl3!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
                     if(arr.length){
                         if(arr.indexOf(strl3)!==-1){
-                            alert('包含了');
+                            // alert('包含了');
                             l31Use();
                             endl3();
                         }else {
-                            arr10.push(strl3);
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl3)!==-1){
+                                    // alert('包含了');
+                                    l31Use();
+                                    endl3();
+                                }else {
+                                    arr10.push(strl3);
+                                }
+                            }else{
+                                arr10.push(strl3);
+                            };
                         }
                     }else{
-                        arr10.push(strl3);
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strl3)!==-1){
+                                // alert('包含了');
+                                l31Use();
+                                endl3();
+                            }else {
+                                arr10.push(strl3);
+                            }
+                        }else{
+                            arr10.push(strl3);
+                        };
                     }
                 }
             }
@@ -867,9 +1237,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strr3.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strr3)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                r31Use();
+                                endr3();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strr3)!==-1){
+                                        // alert('包含了');
+                                        r31Use();
+                                        endr3();
+                                    }else {
+                                        arr10.push(strr3);
+                                    }
+                                }else{
+                                    arr10.push(strr3);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr3)!==-1){
+                                    // alert('包含了');
+                                    r31Use();
+                                    endr3();
+                                }else {
+                                    arr10.push(strr3);
+                                }
+                            }else{
+                                arr10.push(strr3);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strr3!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strr3)!==-1){
+                            // alert('包含了');
+                            r31Use();
+                            endr3();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr3)!==-1){
+                                    // alert('包含了');
+                                    r31Use();
+                                    endr3();
+                                }else {
+                                    arr10.push(strr3);
+                                }
+                            }else{
+                                arr10.push(strr3);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strr3)!==-1){
+                                // alert('包含了');
                                 r31Use();
                                 endr3();
                             }else {
@@ -877,21 +1305,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strr3);
-                        }
-                    }
-                }
-            }else{
-                if(strr3!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strr3)!==-1){
-                            alert('包含了');
-                            r31Use();
-                            endr3();
-                        }else {
-                            arr10.push(strr3);
-                        }
-                    }else{
-                        arr10.push(strr3);
+                        };
                     }
                 }
             }
@@ -930,9 +1344,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strl4.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strl4)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                l41Use();
+                                endl4();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strl4)!==-1){
+                                        // alert('包含了');
+                                        l41Use();
+                                        endl4();
+                                    }else {
+                                        arr10.push(strl4);
+                                    }
+                                }else{
+                                    arr10.push(strl4);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl4)!==-1){
+                                    // alert('包含了');
+                                    l41Use();
+                                    endl4();
+                                }else {
+                                    arr10.push(strl4);
+                                }
+                            }else{
+                                arr10.push(strl4);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strl4!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strl4)!==-1){
+                            // alert('包含了');
+                            l41Use();
+                            endl4();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl4)!==-1){
+                                    // alert('包含了');
+                                    l41Use();
+                                    endl4();
+                                }else {
+                                    arr10.push(strl4);
+                                }
+                            }else{
+                                arr10.push(strl4);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strl4)!==-1){
+                                // alert('包含了');
                                 l41Use();
                                 endl4();
                             }else {
@@ -940,21 +1412,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strl4);
-                        }
-                    }
-                }
-            }else{
-                if(strl4!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strl4)!==-1){
-                            alert('包含了');
-                            l41Use();
-                            endl4();
-                        }else {
-                            arr10.push(strl4);
-                        }
-                    }else{
-                        arr10.push(strl4);
+                        };
                     }
                 }
             }
@@ -993,9 +1451,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strr4.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strr4)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                r41Use();
+                                endr4();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strr4)!==-1){
+                                        // alert('包含了');
+                                        r41Use();
+                                        endr4();
+                                    }else {
+                                        arr10.push(strr4);
+                                    }
+                                }else{
+                                    arr10.push(strr4);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr4)!==-1){
+                                    // alert('包含了');
+                                    r41Use();
+                                    endr4();
+                                }else {
+                                    arr10.push(strr4);
+                                }
+                            }else{
+                                arr10.push(strr4);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strr4!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strr4)!==-1){
+                            // alert('包含了');
+                            r41Use();
+                            endr4();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr4)!==-1){
+                                    // alert('包含了');
+                                    r41Use();
+                                    endr4();
+                                }else {
+                                    arr10.push(strr4);
+                                }
+                            }else{
+                                arr10.push(strr4);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strr4)!==-1){
+                                // alert('包含了');
                                 r41Use();
                                 endr4();
                             }else {
@@ -1003,21 +1519,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strr4);
-                        }
-                    }
-                }
-            }else{
-                if(strr4!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strr4)!==-1){
-                            alert('包含了');
-                            r41Use();
-                            endr4();
-                        }else {
-                            arr10.push(strr4);
-                        }
-                    }else{
-                        arr10.push(strr4);
+                        };
                     }
                 }
             }
@@ -1056,9 +1558,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strl5.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strl5)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                l51Use();
+                                endl5();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strl5)!==-1){
+                                        // alert('包含了');
+                                        l51Use();
+                                        endl5();
+                                    }else {
+                                        arr10.push(strl5);
+                                    }
+                                }else{
+                                    arr10.push(strl5);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl5)!==-1){
+                                    // alert('包含了');
+                                    l51Use();
+                                    endl5();
+                                }else {
+                                    arr10.push(strl5);
+                                }
+                            }else{
+                                arr10.push(strl5);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strl5!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strl5)!==-1){
+                            // alert('包含了');
+                            l51Use();
+                            endl5();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strl5)!==-1){
+                                    // alert('包含了');
+                                    l51Use();
+                                    endl5();
+                                }else {
+                                    arr10.push(strl5);
+                                }
+                            }else{
+                                arr10.push(strl5);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strl5)!==-1){
+                                // alert('包含了');
                                 l51Use();
                                 endl5();
                             }else {
@@ -1066,21 +1626,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strl5);
-                        }
-                    }
-                }
-            }else{
-                if(strl5!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strl5)!==-1){
-                            alert('包含了');
-                            l51Use();
-                            endl5();
-                        }else {
-                            arr10.push(strl5);
-                        }
-                    }else{
-                        arr10.push(strl5);
+                        };
                     }
                 }
             }
@@ -1119,9 +1665,67 @@ window.onload=function(){
                     }
                 }else{
                     if(strr5.length==3){
+                        $('.number-launch').css('display','none');
+                        $('#number-launch').css('display','block');
                         if(arr.length){
                             if(arr.indexOf(strr5)!==-1){
-                                alert('包含了');
+                                // alert('包含了');
+                                r51Use();
+                                endr5();
+                            }else {
+                                if(stopArr.length){
+                                    if(stopArr.indexOf(strr5)!==-1){
+                                        // alert('包含了');
+                                        r51Use();
+                                        endr5();
+                                    }else {
+                                        arr10.push(strr5);
+                                    }
+                                }else{
+                                    arr10.push(strr5);
+                                };
+                            }
+                        }else{
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr5)!==-1){
+                                    // alert('包含了');
+                                    r51Use();
+                                    endr5();
+                                }else {
+                                    arr10.push(strr5);
+                                }
+                            }else{
+                                arr10.push(strr5);
+                            };
+                        }
+                    }
+                }
+            }else{
+                if(strr5!==undefined){
+                    $('.number-launch').css('display','none');
+                    $('#number-launch').css('display','block');
+                    if(arr.length){
+                        if(arr.indexOf(strr5)!==-1){
+                            // alert('包含了');
+                            r51Use();
+                            endr5();
+                        }else {
+                            if(stopArr.length){
+                                if(stopArr.indexOf(strr5)!==-1){
+                                    // alert('包含了');
+                                    r51Use();
+                                    endr5();
+                                }else {
+                                    arr10.push(strr5);
+                                }
+                            }else{
+                                arr10.push(strr5);
+                            };
+                        }
+                    }else{
+                        if(stopArr.length){
+                            if(stopArr.indexOf(strr5)!==-1){
+                                // alert('包含了');
                                 r51Use();
                                 endr5();
                             }else {
@@ -1129,21 +1733,7 @@ window.onload=function(){
                             }
                         }else{
                             arr10.push(strr5);
-                        }
-                    }
-                }
-            }else{
-                if(strr5!==undefined){
-                    if(arr.length){
-                        if(arr.indexOf(strr5)!==-1){
-                            alert('包含了');
-                            r51Use();
-                            endr5();
-                        }else {
-                            arr10.push(strr5);
-                        }
-                    }else{
-                        arr10.push(strr5);
+                        };
                     }
                 }
             }

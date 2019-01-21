@@ -122,6 +122,16 @@
     position: absolute;
     left: 0.4rem;
     top: 0.5rem;
+    display: none;
+}
+.content #number-launch{
+    width: 1.02rem;
+    height: 1.3rem;
+    background: url("../img/number-launch.png") no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0.4rem;
+    top: 0.5rem;
 }
 /*中奖号码发射样式结束*/
 /*奖品样式开始*/
@@ -158,11 +168,19 @@
 .content .block{
     width: 0.4rem;
     height: 0.6rem;
-    background:url("../img/block.png") no-repeat;
-    background-size: 0.3rem 0.6rem;
+    /*background:url("../img/block.png") no-repeat;*/
+    /*background-size: 0.3rem 0.6rem;*/
     position: absolute;
-    left: 54%;
+    left: 48%;
     bottom: 0rem;
+}
+.content .block img{
+    width: 0.3rem;
+    height: 0.6rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -0.3rem;
 }
 /*底部方块结束*/
 /*按钮样式开始*/
