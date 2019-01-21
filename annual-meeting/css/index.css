@@ -4,6 +4,7 @@
     background: url("../img/background.png") no-repeat;
     background-size: cover;
     position: relative;
+    overflow: hidden;
 }
 #rewardZone1{
     display: none;
