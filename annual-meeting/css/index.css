@@ -172,8 +172,9 @@
     /*background:url("../img/block.png") no-repeat;*/
     /*background-size: 0.3rem 0.6rem;*/
     position: absolute;
-    left: 48%;
+    left: 49%;
     bottom: 0rem;
+    /*margin-left: -0.2rem;*/
 }
 .content .block img{
     width: 0.3rem;
